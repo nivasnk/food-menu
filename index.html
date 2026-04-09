@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Fresh Menu</title>
+<title>Kaalvan Fish Hotel - Authentic Malvani Taste</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap');
 
@@ -16,39 +16,70 @@
     --muted: #888;
     --green: #25d366;
     --gold: #ffd700;
+    --ocean: #006994;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: linear-gradient(135deg, #0a2e3f 0%, #0a3d4f 50%, #0a2e3f 100%);
     min-height: 100vh;
     color: var(--text);
     overflow-x: hidden;
   }
 
-  /* ── FLOATING PARTICLES ── */
+  /* Floating Fish Particles */
   .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   .particle {
     position: absolute;
     font-size: 20px;
     animation: float linear infinite;
-    opacity: 0.15;
+    opacity: 0.12;
   }
   @keyframes float {
     0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.15; }
-    90% { opacity: 0.15; }
+    10% { opacity: 0.12; }
+    90% { opacity: 0.12; }
     100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
   }
 
-  /* ── HEADER ── */
+  /* Language Toggle Button */
+  .lang-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+  }
+  .lang-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  .lang-toggle.marathi {
+    background: #ff6b35;
+    color: white;
+  }
+  .lang-toggle.english {
+    background: #006994;
+    color: white;
+  }
+
+  /* Header */
   header {
     position: relative;
     z-index: 10;
     text-align: center;
-    padding: 2.5rem 1rem 1.5rem;
+    padding: 2rem 1rem 1.5rem;
     animation: slideDown 0.8s ease;
   }
   @keyframes slideDown {
@@ -56,11 +87,14 @@
     to { transform: translateY(0); opacity: 1; }
   }
   .logo-ring {
-    width: 80px; height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary), #ff9a3c);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
     margin-bottom: 0.75rem;
     animation: pulse 2s ease-in-out infinite;
     box-shadow: 0 0 30px rgba(255,107,53,0.5);
@@ -94,14 +128,52 @@
     letter-spacing: 0.5px;
   }
 
-  /* ── NAV TABS ── */
+  /* Announcement Banner - IMPROVED VISIBILITY */
+  .announcement {
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c4a 100%);
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .announcement-icon {
+    font-size: 1.5rem;
+    background: rgba(255,255,255,0.2);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .announcement-text {
+    font-size: 0.9rem;
+    color: #ffffff;
+    line-height: 1.5;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .announcement-text strong {
+    color: #fff9c4;
+    font-weight: 700;
+  }
+
+  /* Nav Tabs */
   .nav-tabs {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
     padding: 1rem;
-    position: relative; z-index: 10;
+    position: relative;
+    z-index: 10;
     animation: fadeIn 1s ease 0.3s both;
   }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -124,11 +196,12 @@
     box-shadow: 0 4px 15px rgba(255,107,53,0.4);
   }
 
-  /* ── MENU GRID ── */
+  /* Menu Grid */
   .menu-section {
     display: none;
     padding: 0.5rem 1rem 1rem;
-    position: relative; z-index: 10;
+    position: relative;
+    z-index: 10;
     animation: fadeInUp 0.5s ease;
   }
   .menu-section.active { display: block; }
@@ -149,7 +222,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .menu-card {
@@ -167,13 +240,6 @@
     from { transform: scale(0.9); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
   }
-  .menu-card:nth-child(1) { animation-delay: 0.05s; }
-  .menu-card:nth-child(2) { animation-delay: 0.1s; }
-  .menu-card:nth-child(3) { animation-delay: 0.15s; }
-  .menu-card:nth-child(4) { animation-delay: 0.2s; }
-  .menu-card:nth-child(5) { animation-delay: 0.25s; }
-  .menu-card:nth-child(6) { animation-delay: 0.3s; }
-
   .card-emoji {
     text-align: center;
     font-size: 3rem;
@@ -197,6 +263,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
   }
   .price {
     font-size: 1.1rem;
@@ -212,448 +279,784 @@
   .badge-veg { background: #e8f5e9; color: #2e7d32; }
   .badge-nonveg { background: #fce4ec; color: #c62828; }
   .badge-special { background: #fff8e1; color: #e65100; }
-  .sold-out { opacity: 0.5; }
-  .sold-out .card-emoji::after {
-    content: 'SOLD OUT';
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #c62828;
-    letter-spacing: 2px;
-    margin-top: -0.5rem;
-  }
-
-  /* ── ANNOUNCEMENT BANNER ── */
-  .announcement {
-    max-width: 900px;
-    margin: 0 auto 1rem;
-    background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,154,60,0.1));
-    border: 1px solid rgba(255,107,53,0.3);
-    border-radius: 12px;
-    padding: 0.8rem 1.2rem;
+  
+  .cart-controls {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    position: relative; z-index: 10;
-    animation: fadeIn 1s ease 0.6s both;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
   }
-  .announcement-icon { font-size: 1.3rem; }
-  .announcement-text { font-size: 0.85rem; color: var(--secondary); line-height: 1.5; }
-  .announcement-text strong { color: #fff; }
-
-  /* ── WHATSAPP SECTION ── */
-  .whatsapp-section {
-    max-width: 900px;
-    margin: 1.5rem auto;
-    padding: 0 1rem 2rem;
-    position: relative; z-index: 10;
-  }
-  .wa-card {
-    background: rgba(255,255,255,0.97);
-    border-radius: 20px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    animation: fadeInUp 0.8s ease 0.5s both;
-  }
-  .wa-icon {
-    width: 70px; height: 70px;
+  .qty-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.2s;
+  }
+  .qty-btn:hover {
+    transform: scale(1.1);
+    background: #ff8c4a;
+  }
+  .qty-display {
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+  }
+  .add-to-cart-btn {
     background: var(--green);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 2rem;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .add-to-cart-btn:hover {
+    transform: scale(1.05);
+    background: #128C7E;
+  }
+  .sold-out { opacity: 0.5; pointer-events: none; }
+
+  /* Cart Sidebar */
+  .cart-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 380px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-sidebar.open {
+    transform: translateX(0);
+  }
+  .cart-header {
+    background: var(--primary);
+    color: white;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-header h3 {
+    font-size: 1.2rem;
+  }
+  .close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.5rem;
+  }
+  .cart-item-info {
+    flex: 1;
+  }
+  .cart-item-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .cart-item-price {
+    color: var(--primary);
+    font-size: 0.8rem;
+  }
+  .cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .cart-qty-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .remove-item {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7rem;
+  }
+  .cart-footer {
+    padding: 1rem;
+    border-top: 2px solid #eee;
+    background: #f9f9f9;
+  }
+  .cart-total {
+    font-size: 1.2rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    text-align: center;
+  }
+  .checkout-btn {
+    width: 100%;
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+  }
+  .clear-cart-btn {
+    width: 100%;
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: all 0.2s;
     animation: bounce 2s ease infinite;
+  }
+  .cart-icon:hover {
+    transform: scale(1.1);
+  }
+  .cart-icon span {
+    color: white;
+    font-size: 1.5rem;
+  }
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
   }
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-10px); }
   }
-  .wa-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--dark);
-    margin-bottom: 0.5rem;
-  }
-  .wa-subtitle {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
-  }
-  .wa-features {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-  .wa-feature {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.82rem;
-    color: #555;
-  }
-  .wa-feature-icon { font-size: 1rem; }
-  .wa-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: var(--green);
-    color: #fff;
-    padding: 0.9rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    border: none; cursor: pointer; font-family: 'Poppins', sans-serif;
-  }
-  .wa-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(37,211,102,0.5);
-  }
-  .wa-note {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 0.8rem;
-  }
-  .wa-note a { color: var(--primary); text-decoration: none; }
 
-  /* ── QR CODE SECTION ── */
-  .qr-section {
-    max-width: 900px;
-    margin: 0 auto 2rem;
-    padding: 0 1rem;
-    text-align: center;
-    position: relative; z-index: 10;
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
   }
-  .qr-card {
-    background: rgba(255,255,255,0.97);
+  .overlay.show {
+    display: block;
+  }
+
+  .user-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
     border-radius: 20px;
-    padding: 1.5rem;
-    display: inline-block;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    animation: fadeInUp 0.8s ease 0.7s both;
+    z-index: 1001;
+    width: 90%;
+    max-width: 400px;
+    display: none;
   }
-  .qr-title {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-    letter-spacing: 1px;
+  .user-modal.show {
+    display: block;
   }
-  #qr-canvas { display: block; }
-  .qr-url {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-    word-break: break-all;
+  .user-modal input, .user-modal textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .user-modal textarea {
+    min-height: 80px;
+  }
+  .submit-order {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 600;
   }
 
-  /* ── FOOTER ── */
   footer {
     text-align: center;
     padding: 1.5rem;
     color: rgba(255,255,255,0.3);
     font-size: 0.75rem;
-    position: relative; z-index: 10;
+    position: relative;
+    z-index: 10;
   }
 
-  /* ── TICKER ── */
-  .ticker-wrap {
-    background: rgba(255,107,53,0.1);
-    border-top: 1px solid rgba(255,107,53,0.2);
-    border-bottom: 1px solid rgba(255,107,53,0.2);
-    overflow: hidden;
-    padding: 0.5rem 0;
-    margin-bottom: 1rem;
-    position: relative; z-index: 10;
-  }
-  .ticker-content {
-    display: inline-block;
-    white-space: nowrap;
-    animation: ticker 20s linear infinite;
-    color: var(--secondary);
-    font-size: 0.82rem;
-    padding-left: 100%;
-  }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
-  }
-
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
+    .cart-sidebar { width: 100%; }
     .menu-grid { grid-template-columns: 1fr; }
-    .wa-features { flex-direction: column; align-items: center; }
+    .lang-toggle { top: 10px; right: 10px; padding: 0.4rem 1rem; font-size: 0.8rem; }
+    .logo-ring { width: 70px; height: 70px; font-size: 2rem; }
+    .announcement { padding: 0.6rem 1rem; }
+    .announcement-icon { font-size: 1.2rem; width: 32px; height: 32px; }
+    .announcement-text { font-size: 0.8rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- Particles -->
 <div class="particles" id="particles"></div>
 
-<!-- Header -->
+<button class="lang-toggle english" id="langToggle" onclick="toggleLanguage()">🇮🇳 मराठी</button>
+
 <header>
-  <div class="logo-ring">🍽️</div>
-  <h1>Daily Fresh Menu</h1>
-  <p class="tagline">Home-cooked · Fresh · Delivered with love</p>
+  <div class="logo-ring">🐟</div>
+  <h1 id="hotel-name">Kaalvan Fish Hotel</h1>
+  <p class="tagline" id="tagline">Where Real Malvani Taste Lives</p>
   <div class="date-badge" id="today-date"></div>
 </header>
 
-<!-- Ticker -->
-<div class="ticker-wrap">
-  <span class="ticker-content" id="ticker-text">
-    🌟 Fresh meals cooked daily &nbsp;&nbsp;&nbsp; 🥗 Healthy & hygienic &nbsp;&nbsp;&nbsp; 🚚 Order before 11 AM for lunch &nbsp;&nbsp;&nbsp; ⭐ Customer favourite: Dal Tadka &nbsp;&nbsp;&nbsp; 📱 Subscribe on WhatsApp for daily menu updates &nbsp;&nbsp;&nbsp;
-  </span>
+<div class="announcement" id="announcement"></div>
+
+<div class="nav-tabs" id="nav-tabs"></div>
+
+<div id="menu-container"></div>
+
+<div class="cart-icon" onclick="toggleCart()">
+  <span>🛒</span>
+  <span class="cart-count" id="cart-count">0</span>
 </div>
 
-<!-- Announcement -->
-<div class="announcement" style="padding: 0 1rem; max-width:900px; margin: 0 auto 0.75rem; z-index:10; position:relative;">
-  <span class="announcement-icon">📢</span>
-  <div class="announcement-text" id="announcement-text">
-    <strong>Today's Special:</strong> Loading today's menu...
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h3 id="cart-title">Your Order 🛒</h3>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p style="text-align:center; color:#888;" id="cart-empty-msg">Cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span id="total-label">Total</span>: ₹<span id="cart-total">0</span></div>
+    <button class="checkout-btn" id="checkout-btn" onclick="showUserModal()">📱 Proceed to WhatsApp Order</button>
+    <button class="clear-cart-btn" id="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
   </div>
 </div>
 
-<!-- Nav Tabs -->
-<div class="nav-tabs">
-  <button class="tab-btn active" onclick="showTab('all')">All Items</button>
-  <button class="tab-btn" onclick="showTab('breakfast')">🌅 Breakfast</button>
-  <button class="tab-btn" onclick="showTab('lunch')">☀️ Lunch</button>
-  <button class="tab-btn" onclick="showTab('dinner')">🌙 Dinner</button>
-  <button class="tab-btn" onclick="showTab('snacks')">🍟 Snacks</button>
-</div>
-
-<!-- Menu Sections (populated by JS from menuData) -->
-<div id="menu-container" style="position:relative; z-index:10;"></div>
-
-<!-- WhatsApp Section -->
-<div class="whatsapp-section">
-  <div class="wa-card">
-    <div class="wa-icon">💬</div>
-    <h2 class="wa-title">Get Daily Menu on WhatsApp</h2>
-    <p class="wa-subtitle">
-      Subscribe to receive today's menu automatically every morning.<br>
-      Send <strong>"STOP"</strong> anytime to pause. Send <strong>"HI"</strong> to restart.
-    </p>
-    <div class="wa-features">
-      <div class="wa-feature"><span class="wa-feature-icon">⏰</span> Daily 8 AM update</div>
-      <div class="wa-feature"><span class="wa-feature-icon">✅</span> No spam ever</div>
-      <div class="wa-feature"><span class="wa-feature-icon">🔇</span> Pause anytime</div>
-      <div class="wa-feature"><span class="wa-feature-icon">🆓</span> Completely free</div>
-    </div>
-    <button class="wa-btn" onclick="subscribeWhatsApp()">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Subscribe on WhatsApp
-    </button>
-    <p class="wa-note">By subscribing, you agree to receive menu updates. <a href="#" onclick="showPrivacy()">Privacy policy</a></p>
-  </div>
-</div>
-
-<!-- QR Code Section -->
-<div class="qr-section">
-  <div class="qr-card">
-    <p class="qr-title">📱 SCAN TO VIEW MENU</p>
-    <canvas id="qr-canvas" width="160" height="160"></canvas>
-    <p class="qr-url" id="qr-url-text"></p>
-  </div>
+<div class="user-modal" id="user-modal">
+  <h3 id="delivery-title">📋 Delivery Details</h3>
+  <input type="text" id="user-name" placeholder="Your Name *" required>
+  <input type="tel" id="user-phone" placeholder="Phone Number *" required>
+  <input type="text" id="user-address" placeholder="Delivery Address *" required>
+  <textarea id="user-notes" placeholder="Special instructions (optional)"></textarea>
+  <button class="submit-order" id="send-order-btn" onclick="sendOrderToWhatsApp()">Send Order on WhatsApp</button>
+  <button onclick="closeUserModal()" id="cancel-btn" style="margin-top:0.5rem; width:100%; padding:0.5rem; background:#ddd; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
 </div>
 
 <footer>
-  &copy; 2025 Daily Fresh Menu &nbsp;·&nbsp; Made with ❤️ &nbsp;·&nbsp; Updated daily
+  &copy; 2025 Kaalvan Fish Hotel &nbsp;·&nbsp; Authentic Malvani Taste &nbsp;·&nbsp; Fresh Seafood Daily
 </footer>
 
-<!-- QR Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
-// ══════════════════════════════════════════════
-// MENU DATA — Edit this section to change menu
-// ══════════════════════════════════════════════
-const menuData = {
-  announcement: "Paneer Butter Masala is today's chef special! Order before 11 AM for lunch delivery.",
+// ============================================
+// 📝 MENU CONFIGURATION - KAALVAN FISH HOTEL
+// ============================================
 
-  breakfast: [
-    { name: "Poha", emoji: "🌾", desc: "Flattened rice with peanuts, curry leaves & lemon", price: "₹60", type: "veg", available: true },
-    { name: "Upma", emoji: "🥣", desc: "Semolina cooked with vegetables and mustard seeds", price: "₹55", type: "veg", available: true },
-    { name: "Idli Sambar", emoji: "🫓", desc: "Soft rice cakes with lentil soup & coconut chutney", price: "₹70", type: "veg", available: true },
-    { name: "Paratha + Curd", emoji: "🫶", desc: "Whole wheat stuffed paratha with fresh yogurt", price: "₹80", type: "veg", available: true },
+const MENU_CONFIG = {
+  // Restaurant WhatsApp Number (where orders will be sent)
+  OWNER_WHATSAPP: "917276056142", // Replace with your number
+  
+  announcement_en: "🎉 Surmai and Bombil available. Order before 11:30 PM for dinner delivery",
+  announcement_mr: "🎉 सुरमई आणि बोंबिल उपलब्ध. रात्रीच्या जेवणासाठी रात्री 11:30 पर्यंत ऑर्डर करा",
+  
+  // Menu Items
+  fishFry: [
+    { name_en: "Surmai Fry", name_mr: "सुरमई फ्राय", emoji: "🐟", desc_en: "Kingfish marinated in Malvani masala, shallow fried", desc_mr: "मालवणी मसाल्यात मॅरीनेट केलेली सुरमई, शॅलो फ्राई", price: "₹250", type: "nonveg", available: true },
+    { name_en: "Bangda Fry", name_mr: "बांगडा फ्राय", emoji: "🐟", desc_en: "Mackerel fried with authentic Malvani spices", desc_mr: "प्रामाणिक मालवणी मसाल्यात तळलेला बांगडा", price: "₹180", type: "nonveg", available: true },
+    { name_en: "Paplet Fry", name_mr: "पापलेट फ्राय", emoji: "🐟", desc_en: "Pomfret with spicy Malvani masala", desc_mr: "मसालेदार मालवणी मसाल्यात पापलेट", price: "₹300", type: "nonveg", available: true },
+    { name_en: "Kolambi Fry", name_mr: "कोलंबी फ्राय", emoji: "🦐", desc_en: "Prawns fried with Malvani spices", desc_mr: "मालवणी मसाल्यात तळलेले कोलंबी", price: "₹220", type: "nonveg", available: true },
+    { name_en: "Bombil Fry", name_mr: "बोंबिल फ्राय", emoji: "🐟", desc_en: "Bombay duck crispy fry - Malvani specialty", desc_mr: "बॉम्बे डक क्रिस्पी फ्राय - मालवणी स्पेशालिटी", price: "₹200", type: "nonveg", available: true },
+    { name_en: "Mandeli Fry", name_mr: "मांदेली फ्राय", emoji: "🐟", desc_en: "Small sardines crispy fried", desc_mr: "छोटे सार्डिन क्रिस्पी फ्राई", price: "₹150", type: "nonveg", available: true },
+    { name_en: "Ravas Fry", name_mr: "रावस फ्राय", emoji: "🐟", desc_en: "Indian Salmon with Malvani masala", desc_mr: "मालवणी मसाल्यात रावस", price: "₹350", type: "nonveg", available: true }
   ],
-
-  lunch: [
-    { name: "Dal Tadka + Rice", emoji: "🍛", desc: "Yellow lentils tempered with cumin, served with steamed rice", price: "₹120", type: "veg", available: true, special: true },
-    { name: "Paneer Butter Masala", emoji: "🧀", desc: "Cottage cheese in rich tomato-cream gravy with naan", price: "₹160", type: "veg", available: true, special: true },
-    { name: "Chicken Curry + Rice", emoji: "🍗", desc: "Home-style chicken curry with steamed rice & salad", price: "₹180", type: "nonveg", available: true },
-    { name: "Rajma Chawal", emoji: "🫘", desc: "Kidney beans curry with basmati rice & pickle", price: "₹110", type: "veg", available: true },
-    { name: "Fish Curry + Rice", emoji: "🐟", desc: "Coastal style fish curry with steamed rice", price: "₹200", type: "nonveg", available: false },
-    { name: "Veg Thali", emoji: "🍱", desc: "2 subzi + dal + rice + roti + curd + dessert", price: "₹150", type: "veg", available: true },
+  
+  fishCurry: [
+    { name_en: "Ravas Curry", name_mr: "रावस करी", emoji: "🍛", desc_en: "Indian Salmon in coconut based Malvani curry", desc_mr: "नारळाच्या मालवणी करीमध्ये रावस", price: "₹280", type: "nonveg", available: true },
+    { name_en: "Bangda Curry", name_mr: "बांगडा करी", emoji: "🍛", desc_en: "Mackerel in spicy Malvani curry", desc_mr: "मसालेदार मालवणी करीमध्ये बांगडा", price: "₹200", type: "nonveg", available: true },
+    { name_en: "Surmai Curry", name_mr: "सुरमई करी", emoji: "🍛", desc_en: "Kingfish in rich coconut gravy", desc_mr: "समृद्ध नारळाच्या करीमध्ये सुरमई", price: "₹260", type: "nonveg", available: true }
   ],
-
-  dinner: [
-    { name: "Roti + Sabzi", emoji: "🫓", desc: "2 whole wheat rotis with seasonal vegetable curry", price: "₹90", type: "veg", available: true },
-    { name: "Khichdi", emoji: "🥘", desc: "Comforting rice-lentil porridge with ghee & papad", price: "₹80", type: "veg", available: true },
-    { name: "Egg Curry + Rice", emoji: "🥚", desc: "Boiled eggs in spiced onion-tomato gravy", price: "₹130", type: "nonveg", available: true },
-    { name: "Methi Thepla", emoji: "🌿", desc: "Fenugreek flatbread with pickle & curd", price: "₹70", type: "veg", available: true },
-  ],
-
-  snacks: [
-    { name: "Samosa (2 pcs)", emoji: "🥟", desc: "Crispy pastry filled with spiced potato & peas", price: "₹40", type: "veg", available: true },
-    { name: "Vada Pav", emoji: "🍔", desc: "Mumbai street-style spiced potato fritter in bun", price: "₹35", type: "veg", available: true },
-    { name: "Chai", emoji: "☕", desc: "Masala ginger tea with milk", price: "₹20", type: "veg", available: true },
-    { name: "Lassi", emoji: "🥛", desc: "Chilled sweet yogurt drink", price: "₹50", type: "veg", available: true },
+  
+  chicken: [
+    { name_en: "Chicken Sukka", name_mr: "चिकन सुक्का", emoji: "🍗", desc_en: "Dry chicken preparation with Malvani spices", desc_mr: "मालवणी मसाल्यात ड्राय चिकन", price: "₹220", type: "nonveg", available: true },
+    { name_en: "Chicken Malvani", name_mr: "चिकन मालवणी", emoji: "🍛", desc_en: "Chicken in authentic Malvani curry", desc_mr: "प्रामाणिक मालवणी करीमध्ये चिकन", price: "₹240", type: "nonveg", available: true },
+    { name_en: "Malvani Chicken Wade", name_mr: "मालवणी चिकन वडे", emoji: "🥘", desc_en: "Chicken curry served with rice dumplings", desc_mr: "तांदळाच्या वड्यासोबत चिकन करी", price: "₹260", type: "nonveg", available: true, special: true },
+    { name_en: "Solkadhi", name_mr: "सोलकढी", emoji: "🥛", desc_en: "Refreshing kokum and coconut milk drink", desc_mr: "ताजेतवाने कोकम आणि नारळाचं दूध पेय", price: "₹60", type: "veg", available: true },
+    { name_en: "Bhakari - Tandul", name_mr: "भाकरी - तांदूळ", emoji: "🫓", desc_en: "Traditional rice flour flatbread", desc_mr: "पारंपारिक तांदळाची भाकरी", price: "₹30", type: "veg", available: true },
+    { name_en: "Bhakari - Jwari", name_mr: "भाकरी - ज्वारी", emoji: "🫓", desc_en: "Sorghum millet flatbread", desc_mr: "ज्वारीची भाकरी", price: "₹30", type: "veg", available: true }
   ]
 };
 
-// ══════════════════════════════════════════════
-// CONFIG — Change your WhatsApp number here
-// ══════════════════════════════════════════════
-const WHATSAPP_NUMBER = "917276056142"; // Format: country code + number, no +
-const WEBSITE_URL = window.location.href.split('?')[0];
+// Translations for UI elements
+const translations = {
+  en: {
+    hotelName: "Kaalvan Fish Hotel",
+    tagline: "Where Real Malvani Taste Lives",
+    fishFry: "🐟 Fish Fry",
+    fishCurry: "🍛 Fish Curry",
+    chicken: "🍗 Chicken & More",
+    allItems: "All Items",
+    announcement: "📢 Announcement",
+    cartTitle: "Your Order 🛒",
+    cartEmpty: "Cart is empty",
+    total: "Total",
+    checkout: "Proceed to WhatsApp Order",
+    clearCart: "Clear Cart",
+    deliveryTitle: "📋 Delivery Details",
+    sendOrder: "Send Order on WhatsApp",
+    cancel: "Cancel",
+    namePlaceholder: "Your Name *",
+    phonePlaceholder: "Phone Number *",
+    addressPlaceholder: "Delivery Address *",
+    notesPlaceholder: "Special instructions (optional)",
+    addToCart: "Add to Cart",
+    soldOut: "Sold Out"
+  },
+  mr: {
+    hotelName: "कालवण फिश हॉटेल",
+    tagline: "जिथे राहतात खरी मालवणी चव",
+    fishFry: "🐟 फिश फ्राय",
+    fishCurry: "🍛 फिश करी",
+    chicken: "🍗 चिकन आणि इतर",
+    allItems: "सर्व पदार्थ",
+    announcement: "📢 सूचना",
+    cartTitle: "तुमची ऑर्डर 🛒",
+    cartEmpty: "कार्ट रिकामे आहे",
+    total: "एकूण",
+    checkout: "व्हॉट्सअॅपवर ऑर्डर करा",
+    clearCart: "कार्ट रिकामी करा",
+    deliveryTitle: "📋 डिलिव्हरी तपशील",
+    sendOrder: "व्हॉट्सअॅपवर ऑर्डर पाठवा",
+    cancel: "रद्द करा",
+    namePlaceholder: "तुमचे नाव *",
+    phonePlaceholder: "फोन नंबर *",
+    addressPlaceholder: "डिलिव्हरी पत्ता *",
+    notesPlaceholder: "विशेष सूचना (पर्यायी)",
+    addToCart: "कार्टमध्ये घाला",
+    soldOut: "संपले"
+  }
+};
 
-// ══════════════════════════════════════════════
-// RENDER
-// ══════════════════════════════════════════════
-function renderMenu() {
-  // Date
-  const d = new Date();
-  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-  document.getElementById('today-date').textContent = d.toLocaleDateString('en-IN', opts);
+let currentLang = 'en';
+let cart = [];
 
-  // Announcement
-  document.getElementById('announcement-text').innerHTML =
-    '<strong>Today\'s Special:</strong> ' + menuData.announcement;
-
-  // Build sections
-  const container = document.getElementById('menu-container');
-  const categories = ['breakfast','lunch','dinner','snacks'];
-  const labels = { breakfast:'🌅 Breakfast', lunch:'☀️ Lunch', dinner:'🌙 Dinner', snacks:'🍟 Snacks' };
-
-  categories.forEach(cat => {
-    const sec = document.createElement('div');
-    sec.className = 'menu-section';
-    sec.id = 'sec-' + cat;
-    sec.innerHTML = `<p class="section-title" style="padding:0 1rem;">${labels[cat]}</p><div class="menu-grid" style="padding:0 1rem;">` +
-      menuData[cat].map(item => `
-        <div class="menu-card ${!item.available ? 'sold-out' : ''}">
-          <div class="card-emoji">${item.emoji}</div>
-          <div class="card-body">
-            <div class="card-name">${item.name}</div>
-            <div class="card-desc">${item.desc}</div>
-            <div class="card-footer">
-              <span class="price">${item.price}</span>
-              <span class="badge badge-${item.special ? 'special' : item.type}">
-                ${item.special ? '⭐ Special' : item.type === 'veg' ? '🟢 Veg' : '🔴 Non-veg'}
-              </span>
-            </div>
-          </div>
-        </div>`).join('') + `</div>`;
-    container.appendChild(sec);
-  });
-
-  // "All" virtual section
-  const allSec = document.createElement('div');
-  allSec.className = 'menu-section active';
-  allSec.id = 'sec-all';
-  categories.forEach(cat => {
-    allSec.innerHTML += `<p class="section-title" style="padding:0 1rem; margin-top:1rem;">${labels[cat]}</p><div class="menu-grid" style="padding:0 1rem;">` +
-      menuData[cat].map(item => `
-        <div class="menu-card ${!item.available ? 'sold-out' : ''}">
-          <div class="card-emoji">${item.emoji}</div>
-          <div class="card-body">
-            <div class="card-name">${item.name}</div>
-            <div class="card-desc">${item.desc}</div>
-            <div class="card-footer">
-              <span class="price">${item.price}</span>
-              <span class="badge badge-${item.special ? 'special' : item.type}">
-                ${item.special ? '⭐ Special' : item.type === 'veg' ? '🟢 Veg' : '🔴 Non-veg'}
-              </span>
-            </div>
-          </div>
-        </div>`).join('') + `</div>`;
-  });
-  container.insertBefore(allSec, container.firstChild);
-}
-
-function showTab(cat) {
-  document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('sec-' + cat).classList.add('active');
-  event.target.classList.add('active');
-}
-
-// ══════════════════════════════════════════════
-// WHATSAPP
-// ══════════════════════════════════════════════
-function subscribeWhatsApp() {
-  const msg = encodeURIComponent("HI\n\nI'd like to subscribe to the daily food menu updates! 🍽️");
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
-}
-function showPrivacy() {
-  alert("We only send daily menu updates. Reply STOP to unsubscribe anytime. No data is shared with third parties.");
-}
-
-// ══════════════════════════════════════════════
-// QR CODE
-// ══════════════════════════════════════════════
-function generateQR() {
-  const url = WEBSITE_URL;
-  document.getElementById('qr-url-text').textContent = url.length > 40 ? url.substring(0,37)+'...' : url;
-
-  const canvas = document.getElementById('qr-canvas');
-  const ctx = canvas.getContext('2d');
-  const size = 160;
-  canvas.width = size; canvas.height = size;
-
-  try {
-    new QRCode(canvas, {
-      text: url,
-      width: size,
-      height: size,
-      colorDark: "#1a1a2e",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    });
-  } catch(e) {
-    // Fallback — draw placeholder
-    ctx.fillStyle = '#f5f5f5';
-    ctx.fillRect(0,0,size,size);
-    ctx.fillStyle = '#1a1a2e';
-    ctx.font = '11px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('Scan QR', size/2, size/2 - 10);
-    ctx.fillText('(deploy to see)', size/2, size/2 + 10);
+// Load cart from localStorage
+function loadCart() {
+  const savedCart = localStorage.getItem('kaalvanCart');
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+    updateCartUI();
   }
 }
 
-// ══════════════════════════════════════════════
-// PARTICLES
-// ══════════════════════════════════════════════
+// Save cart
+function saveCart() {
+  localStorage.setItem('kaalvanCart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+// Add to cart
+function addToCart(item, category) {
+  const existingItem = cart.find(i => i.name_en === item.name_en);
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cart.push({
+      ...item,
+      category: category,
+      quantity: 1
+    });
+  }
+  saveCart();
+  showNotification(`${currentLang === 'en' ? item.name_en : item.name_mr} added to cart!`);
+}
+
+// Update quantity
+function updateQuantity(itemNameEn, delta) {
+  const item = cart.find(i => i.name_en === itemNameEn);
+  if (item) {
+    item.quantity += delta;
+    if (item.quantity <= 0) {
+      cart = cart.filter(i => i.name_en !== itemNameEn);
+    }
+    saveCart();
+  }
+}
+
+// Remove item
+function removeItem(itemNameEn) {
+  cart = cart.filter(i => i.name_en !== itemNameEn);
+  saveCart();
+}
+
+// Clear cart
+function clearCart() {
+  if (confirm(currentLang === 'en' ? 'Clear entire cart?' : 'संपूर्ण कार्ट रिकामी करायची?')) {
+    cart = [];
+    saveCart();
+  }
+}
+
+// Update cart UI
+function updateCartUI() {
+  const cartItemsDiv = document.getElementById('cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const cartTotalSpan = document.getElementById('cart-total');
+  
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = cart.reduce((sum, item) => {
+    const price = parseInt(item.price.replace('₹', ''));
+    return sum + (price * item.quantity);
+  }, 0);
+  
+  cartCount.textContent = totalItems;
+  cartTotalSpan.textContent = total;
+  
+  if (cart.length === 0) {
+    cartItemsDiv.innerHTML = `<p style="text-align:center; color:#888;">${translations[currentLang].cartEmpty}</p>`;
+    return;
+  }
+  
+  cartItemsDiv.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${currentLang === 'en' ? item.name_en : item.name_mr}</div>
+        <div class="cart-item-price">${item.price}</div>
+      </div>
+      <div class="cart-item-controls">
+        <button class="cart-qty-btn" onclick="updateQuantity('${item.name_en}', -1)">-</button>
+        <span>${item.quantity}</span>
+        <button class="cart-qty-btn" onclick="updateQuantity('${item.name_en}', 1)">+</button>
+        <button class="remove-item" onclick="removeItem('${item.name_en}')">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Show notification
+function showNotification(msg) {
+  const notification = document.createElement('div');
+  notification.textContent = msg;
+  notification.style.cssText = `
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: var(--green);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 1002;
+    animation: fadeInUp 0.3s ease;
+  `;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 2000);
+}
+
+// Toggle cart
+function toggleCart() {
+  document.getElementById('cart-sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function closeCart() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// Show user modal
+function showUserModal() {
+  if (cart.length === 0) {
+    alert(currentLang === 'en' ? 'Your cart is empty! Add some items first.' : 'तुमचे कार्ट रिकामे आहे! कृपया काही पदार्थ घाला.');
+    return;
+  }
+  closeCart();
+  document.getElementById('user-modal').classList.add('show');
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeUserModal() {
+  document.getElementById('user-modal').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// Send order to WhatsApp
+function sendOrderToWhatsApp() {
+  const name = document.getElementById('user-name').value.trim();
+  const phone = document.getElementById('user-phone').value.trim();
+  const address = document.getElementById('user-address').value.trim();
+  const notes = document.getElementById('user-notes').value.trim();
+  
+  if (!name || !phone || !address) {
+    alert(currentLang === 'en' ? 'Please fill in all required fields' : 'कृपया सर्व आवश्यक माहिती भरा');
+    return;
+  }
+  
+  let orderDetails = `🍽️ *NEW ORDER - KAALVAN FISH HOTEL* 🍽️\n\n`;
+  orderDetails += `*Customer Details:*\n`;
+  orderDetails += `Name: ${name}\n`;
+  orderDetails += `Phone: ${phone}\n`;
+  orderDetails += `Address: ${address}\n`;
+  if (notes) orderDetails += `Special Notes: ${notes}\n`;
+  orderDetails += `\n*Order Items:*\n`;
+  
+  let total = 0;
+  cart.forEach((item, index) => {
+    const price = parseInt(item.price.replace('₹', ''));
+    const itemTotal = price * item.quantity;
+    total += itemTotal;
+    const itemName = currentLang === 'en' ? item.name_en : item.name_mr;
+    orderDetails += `${index + 1}. ${itemName} x ${item.quantity} = ₹${itemTotal}\n`;
+  });
+  
+  orderDetails += `\n*Total Amount:* ₹${total}\n`;
+  orderDetails += `\n⏰ Order Time: ${new Date().toLocaleString()}\n`;
+  
+  const encodedMessage = encodeURIComponent(orderDetails);
+  const whatsappUrl = `https://wa.me/${MENU_CONFIG.OWNER_WHATSAPP}?text=${encodedMessage}`;
+  
+  window.open(whatsappUrl, '_blank');
+  
+  cart = [];
+  saveCart();
+  closeUserModal();
+  
+  alert(currentLang === 'en' ? 'Order sent! You will be redirected to WhatsApp.' : 'ऑर्डर पाठवली! तुम्ही व्हॉट्सअॅपवर रीडायरेक्ट व्हाल.');
+}
+
+// Toggle Language
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'mr' : 'en';
+  const toggleBtn = document.getElementById('langToggle');
+  
+  if (currentLang === 'mr') {
+    toggleBtn.textContent = '🇬🇧 English';
+    toggleBtn.className = 'lang-toggle marathi';
+  } else {
+    toggleBtn.textContent = '🇮🇳 मराठी';
+    toggleBtn.className = 'lang-toggle english';
+  }
+  
+  renderMenu();
+  updateCartUI();
+  updateUITexts();
+}
+
+// Update UI texts
+function updateUITexts() {
+  document.getElementById('hotel-name').textContent = translations[currentLang].hotelName;
+  document.getElementById('tagline').textContent = translations[currentLang].tagline;
+  document.getElementById('cart-title').textContent = translations[currentLang].cartTitle;
+  document.getElementById('total-label').textContent = translations[currentLang].total;
+  document.getElementById('checkout-btn').textContent = translations[currentLang].checkout;
+  document.getElementById('clear-cart-btn').textContent = translations[currentLang].clearCart;
+  document.getElementById('delivery-title').textContent = translations[currentLang].deliveryTitle;
+  document.getElementById('send-order-btn').textContent = translations[currentLang].sendOrder;
+  document.getElementById('cancel-btn').textContent = translations[currentLang].cancel;
+  document.getElementById('user-name').placeholder = translations[currentLang].namePlaceholder;
+  document.getElementById('user-phone').placeholder = translations[currentLang].phonePlaceholder;
+  document.getElementById('user-address').placeholder = translations[currentLang].addressPlaceholder;
+  document.getElementById('user-notes').placeholder = translations[currentLang].notesPlaceholder;
+  
+  const announcementText = currentLang === 'en' ? MENU_CONFIG.announcement_en : MENU_CONFIG.announcement_mr;
+  document.getElementById('announcement').innerHTML = `
+    <span class="announcement-icon">📢</span>
+    <div class="announcement-text"><strong>${translations[currentLang].announcement}:</strong> ${announcementText}</div>
+  `;
+}
+
+// Render menu
+function renderMenu() {
+  const d = new Date();
+  const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('today-date').textContent = d.toLocaleDateString(currentLang === 'en' ? 'en-IN' : 'mr-IN', opts);
+  
+  const categories = [
+    { id: 'fishFry', label_en: '🐟 Fish Fry', label_mr: '🐟 फिश फ्राय' },
+    { id: 'fishCurry', label_en: '🍛 Fish Curry', label_mr: '🍛 फिश करी' },
+    { id: 'chicken', label_en: '🍗 Chicken & More', label_mr: '🍗 चिकन आणि इतर' }
+  ];
+  
+  const tabsHtml = `
+    <button class="tab-btn active" onclick="showTab('all', event)">${translations[currentLang].allItems}</button>
+    ${categories.map(cat => `
+      <button class="tab-btn" onclick="showTab('${cat.id}', event)">${currentLang === 'en' ? cat.label_en : cat.label_mr}</button>
+    `).join('')}
+  `;
+  document.getElementById('nav-tabs').innerHTML = tabsHtml;
+  
+  const container = document.getElementById('menu-container');
+  container.innerHTML = '';
+  
+  // Individual category sections
+  categories.forEach(cat => {
+    const section = document.createElement('div');
+    section.className = 'menu-section';
+    section.id = `sec-${cat.id}`;
+    section.innerHTML = `
+      <p class="section-title">${currentLang === 'en' ? cat.label_en : cat.label_mr}</p>
+      <div class="menu-grid">
+        ${MENU_CONFIG[cat.id].map(item => `
+          <div class="menu-card ${!item.available ? 'sold-out' : ''}">
+            <div class="card-emoji">${item.emoji}</div>
+            <div class="card-body">
+              <div class="card-name">${currentLang === 'en' ? item.name_en : item.name_mr}</div>
+              <div class="card-desc">${currentLang === 'en' ? item.desc_en : item.desc_mr}</div>
+              <div class="card-footer">
+                <span class="price">${item.price}</span>
+                <span class="badge badge-${item.special ? 'special' : item.type}">
+                  ${item.special ? (currentLang === 'en' ? '⭐ Special' : '⭐ विशेष') : (item.type === 'veg' ? (currentLang === 'en' ? '🟢 Veg' : '🟢 शाकाहारी') : (currentLang === 'en' ? '🔴 Non-veg' : '🔴 मांसाहारी'))}
+                </span>
+              </div>
+              ${item.available ? `
+                <div class="cart-controls">
+                  <button class="add-to-cart-btn" onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')}, '${cat.id}')">
+                    🛒 ${translations[currentLang].addToCart}
+                  </button>
+                </div>
+              ` : `<div style="text-align:center; color:#c62828; font-size:0.7rem; margin-top:0.5rem;">${translations[currentLang].soldOut}</div>`}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+  
+  // All items section
+  const allSection = document.createElement('div');
+  allSection.className = 'menu-section active';
+  allSection.id = 'sec-all';
+  
+  categories.forEach(cat => {
+    allSection.innerHTML += `
+      <p class="section-title">${currentLang === 'en' ? cat.label_en : cat.label_mr}</p>
+      <div class="menu-grid">
+        ${MENU_CONFIG[cat.id].map(item => `
+          <div class="menu-card ${!item.available ? 'sold-out' : ''}">
+            <div class="card-emoji">${item.emoji}</div>
+            <div class="card-body">
+              <div class="card-name">${currentLang === 'en' ? item.name_en : item.name_mr}</div>
+              <div class="card-desc">${currentLang === 'en' ? item.desc_en : item.desc_mr}</div>
+              <div class="card-footer">
+                <span class="price">${item.price}</span>
+                <span class="badge badge-${item.special ? 'special' : item.type}">
+                  ${item.special ? (currentLang === 'en' ? '⭐ Special' : '⭐ विशेष') : (item.type === 'veg' ? (currentLang === 'en' ? '🟢 Veg' : '🟢 शाकाहारी') : (currentLang === 'en' ? '🔴 Non-veg' : '🔴 मांसाहारी'))}
+                </span>
+              </div>
+              ${item.available ? `
+                <div class="cart-controls">
+                  <button class="add-to-cart-btn" onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')}, '${cat.id}')">
+                    🛒 ${translations[currentLang].addToCart}
+                  </button>
+                </div>
+              ` : `<div style="text-align:center; color:#c62828; font-size:0.7rem; margin-top:0.5rem;">${translations[currentLang].soldOut}</div>`}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  });
+  container.insertBefore(allSection, container.firstChild);
+}
+
+function showTab(cat, event) {
+  document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`sec-${cat}`).classList.add('active');
+  if (event && event.target) event.target.classList.add('active');
+}
+
+// Particles
 function spawnParticles() {
-  const emojis = ['🍕','🍜','🥗','🍛','🥘','🍱','🥙','🌮','🍔','🥐','🍩','🍎'];
+  const fishes = ['🐟','🐠','🐡','🦐','🦀','🐙'];
   const container = document.getElementById('particles');
-  for(let i=0; i<18; i++) {
+  for(let i = 0; i < 25; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-    p.style.left = Math.random()*100 + 'vw';
-    p.style.animationDuration = (12 + Math.random()*20) + 's';
-    p.style.animationDelay = (Math.random()*15) + 's';
-    p.style.fontSize = (14 + Math.random()*14) + 'px';
+    p.textContent = fishes[Math.floor(Math.random() * fishes.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (12 + Math.random() * 20) + 's';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    p.style.fontSize = (14 + Math.random() * 14) + 'px';
     container.appendChild(p);
   }
 }
 
-// ══════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════
+// Initialize
 renderMenu();
 spawnParticles();
-window.addEventListener('load', function() {
-  setTimeout(generateQR, 500);
-});
+loadCart();
+updateUITexts();
 </script>
 </body>
 </html>
